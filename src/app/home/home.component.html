@@ -1,0 +1,30 @@
+<app-search></app-search>
+<app-tags></app-tags>
+<app-not-found [visible]="!products || products.length <= 0 " resetLinkText="Reset search"></app-not-found>
+<ul>
+    <li *ngFor = "let product of products">
+        <a routerLink="/product/{{product.id}}">
+            <img src="{{product.imageUrl}}" alt="">
+            <div class="content">
+                <div class="name">
+                    {{product.name}}
+                </div>
+                <span class="favorite {{product.favorite?'':'not'}}">
+                    ❤
+                </span>
+                <div class="product-item-footer">
+                    <div class="estimated-time">
+                        <span>
+                            🕐
+                        </span>
+                        {{product.estimatedDeliveryTime}}
+                    </div>
+                </div>
+                <div class="price">
+                    <span>{{product.price|currency:'EUR'}}</span>
+                </div>
+            </div>
+        </a>
+
+    </li>
+</ul>

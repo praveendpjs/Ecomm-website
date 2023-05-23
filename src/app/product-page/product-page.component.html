@@ -1,0 +1,26 @@
+<app-not-found [visible]="!product" notFoundMessage="Stop messing around 😫" resetLinkText="Back to HomePage"></app-not-found>
+<div *ngIf="product" class="container">
+  <img [src]="product.imageUrl" [alt]="product.name">
+  <div class="details">
+    <div class="header">
+      <span class="name">
+        {{product.name}}
+      </span>
+      <span class="favorite {{product.favorite?'':'not'}}">
+        🤍
+      </span>
+    </div>
+    <div class="tags">
+      <app-tags [productPageTags]="product.tags"></app-tags>
+    </div>
+    <div class="delivery-time">
+      <span>
+        Time to deliver about <strong>{{product.estimatedDeliveryTime}}</strong>
+      </span>
+    </div>
+    <div class="price">
+      <span>{{product.price|currency:'EUR'}}</span>
+    </div>
+    <button (click)="addToCart()">Add to cart</button>
+  </div>
+</div>
